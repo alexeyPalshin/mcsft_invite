@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  "name": "MCSFT Invite",
+  "description": "coming soon",
+  "version": "0.0.1",
+  "browser_action": {
+    "default_popup": "pages/background.html",
+    "default_title": "MCSFT Invite",
+    "default_icon": {
+      "16": "src/assets/icon16.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "js": ["src/lib/jquery-3.3.1.min.js", "src/app/content.js" ],
+      "matches": ["*://*/*"],
+      "run_at": "document_start"
+    }
+  ],
+  "offline_enabled": false,
+  "permissions": [
+    "*://*/*",
+    "cookies",
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "alarms",
+    "notifications"
+  ]
+}
