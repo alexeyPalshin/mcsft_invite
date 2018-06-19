@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "MCSFT Invite",
-  "description": "coming soon",
+  "description": "Yandex events planing from email invitation",
   "version": "0.0.1",
   "browser_action": {
     "default_popup": "pages/background.html",
@@ -10,14 +10,21 @@
       "16": "src/assets/icon16.png"
     }
   },
-  "content_scripts": [
-    {
-      "js": ["src/lib/jquery-3.3.1.min.js", "src/app/content.js" ],
-      "matches": ["*://*/*"],
-      "run_at": "document_start"
-    }
-  ],
   "offline_enabled": false,
+//  "default_locale": "en",
+//  "content_scripts": [
+//    {
+//      "matches": ["*://*/*"],
+//      "css": [
+//        "node_modules/angular/angular-csp.css"
+//      ],
+////        "js": [
+////          "bower_components/angular/angular.min.js",
+////          "scripts.babel/contentscript.js"
+////        ],
+//      "run_at": "document_start"
+//    }
+//  ],
   "permissions": [
     "*://*/*",
     "cookies",
@@ -26,5 +33,9 @@
     "storage",
     "alarms",
     "notifications"
+  ],
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "web_accessible_resources": [
+    "bower_components/angular/*"
   ]
 }

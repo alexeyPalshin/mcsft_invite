@@ -10,6 +10,6 @@ req.keys().forEach(req);
 var req = require.context('./services', true, /.*\.js$/);
 req.keys().forEach(req);
 
-app.run(function() {
-    console.log("app run");
-});
+// app.run(function() {
+//     console.log("app run");
+// });
