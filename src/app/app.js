@@ -9,7 +9,3 @@ req.keys().forEach(req);
 // require all .js files in services folder
 var req = require.context('./services', true, /.*\.js$/);
 req.keys().forEach(req);
-
-// app.run(function() {
-//     console.log("app run");
-// });
