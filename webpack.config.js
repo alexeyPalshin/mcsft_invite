@@ -1,4 +1,5 @@
-var path = require('path');
+const path = require('path');
+const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 module.exports = {
     entry: path.join(__dirname, '/src/app/app.js'),
@@ -21,5 +22,11 @@ module.exports = {
     devtool: "#inline-source-map",
     node: {
         __filename: true
-    }
+    },
+    plugins: [
+        new ngAnnotatePlugin({
+            add: true,
+            // other ng-annotate options here
+        })
+    ]
 };

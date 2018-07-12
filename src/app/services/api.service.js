@@ -30,34 +30,28 @@ angular.module('mcsft').service(service_name, ["$http", function ($http)  {
     return {
         loadUserInfo: function () {
 
-            getCookieUid().then(function (response) {
-                //variable definition
-                cookieUid = response;
+            return new Promise(((resolve, reject) => {
+                getCookieUid().then(function (response) {
+                    //variable definition
+                    cookieUid = response;
 
-                var req = {
-                    method: 'get',
-                    url: AUTH_CONFIG.passportUrl,
-                    params: { yu: cookieUid }
-                };
+                    var req = {
+                        method: 'get',
+                        url: AUTH_CONFIG.passportUrl,
+                        params: { yu: cookieUid }
+                    };
 
-                $http(req).then(function (res) {
-                    const resData = res.data || JSON.parse(res.text);
+                    $http(req).then(function (res) {
+                        const resData = res.data || JSON.parse(res.text);
 
-                    if (resData.code === appConfig.errors.notAuthorized) {
-                        throw new Error(appConfig.errors.notAuthorized);
-                    }
+                        if (resData.code === appConfig.errors.notAuthorized) {
+                            throw new Error(appConfig.errors.notAuthorized);
+                        }
 
-                    return resData;
-                }, function (error) {
-                    console.log(error);
-                })
-            }, function (error) {
-                console.log(error);
-            });
-            // if (!cookieUid) {
-            //     throw new Error(appConfig.errors.notAuthorized);
-            // }
-
+                         resolve(resData);
+                    }, reject)
+                }, reject)
+            }));
         }
     };
 }]);

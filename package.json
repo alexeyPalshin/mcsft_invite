@@ -8,7 +8,9 @@
   "author": "a.palshin@belitsoft.com",
   "license": "MIT",
   "dependencies": {
-    "angular": "^1.6.9"
+    "@uirouter/angularjs": "^1.0.18",
+    "angular": "^1.6.9",
+    "ng-annotate-webpack-plugin": "^0.3.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

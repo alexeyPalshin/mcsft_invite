@@ -1,8 +1,7 @@
-module.exports = ["$scope", "ApiService", function ($scope, ApiService) {
+module.exports = ["$scope", "ApiService", "$state", function ($scope, ApiService, $state) {
     'ngInject';
 
-    var yandexAccount = ApiService.loadUserInfo();
-
-    console.log(yandexAccount);
+    $scope.title = 'gup';
+    $state.go('init');
 
 }];
