@@ -1,7 +1,14 @@
 module.exports = ["$scope", "ApiService", "$state", function ($scope, ApiService, $state) {
     'ngInject';
 
-    $scope.title = 'gup';
-    $state.go('init');
+    $scope.user = {
+        email: "",
+        password: "",
+    };
 
+    $scope.login = function() {
+        UsersService.login($scope.user).then(function (data) {
+            $state.go('init');
+        });
+    };
 }];

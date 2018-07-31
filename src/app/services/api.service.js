@@ -30,7 +30,7 @@ angular.module('mcsft').service(service_name, ["$http", function ($http)  {
     return {
         loadUserInfo: function () {
 
-            return new Promise(((resolve, reject) => {
+            return new Promise((resolve, reject) => {
                 getCookieUid().then(function (response) {
                     //variable definition
                     cookieUid = response;
@@ -41,6 +41,7 @@ angular.module('mcsft').service(service_name, ["$http", function ($http)  {
                         params: { yu: cookieUid }
                     };
 
+                    // after the cookie
                     $http(req).then(function (res) {
                         const resData = res.data || JSON.parse(res.text);
 
@@ -51,7 +52,7 @@ angular.module('mcsft').service(service_name, ["$http", function ($http)  {
                          resolve(resData);
                     }, reject)
                 }, reject)
-            }));
+            });
         }
     };
 }]);

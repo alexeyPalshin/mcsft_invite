@@ -14,19 +14,10 @@ req.keys().forEach(req);
 app.config(['$stateProvider', '$urlRouterProvider', '$urlServiceProvider', '$compileProvider', function ($stateProvider, $urlRouterProvider, $urlServiceProvider, $compileProvider) {
     'ngInject';
 
-    var appState = {
-        name: "app",
-            url: "^",
-        abstract: true,
-        template: '<ui-view autoscroll="true"><ui-view/>'
-    };
-
-
     $compileProvider.preAssignBindingsEnabled(true);
 
     var state = {
         name: 'init',
-        url: "init",
         component: 'initComponent',
         resolve: {
             yandexuid: ['ApiService', function (ApiService) {
@@ -35,7 +26,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$urlServiceProvider', '$com
             }]
         },
     };
-    $stateProvider.state(appState);
+
+    var loginState = {
+        name: 'login',
+        component: 'loginComponent'
+    };
+    $stateProvider.state(loginState);
     $stateProvider.state(state);
     $urlServiceProvider.rules.otherwise({ state: 'init' });
 }]);
